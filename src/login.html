@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>幻蝶进销存管理</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <style>
+        html,
+        body {
+            background: #cccc;
+        }
+
+        .user_login .layui-input {
+            width: 230px;
+        }
+
+        .inputdiv {
+            display: flex;
+            border: 1px solid #D2D2D2 !important;
+            background-color: #fff;
+            height: 38px;
+            line-height: 38px;
+            padding: 0px 19px;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .layui-input {
+            border-style: none;
+        }
+
+        .user_login {
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            opacity: 0.8;
+        }
+
+        /* user_form_main  */
+        .user_form_main {
+            background: #ffffff;
+            padding: 20px 20px;
+        }
+
+        .user_form_main .title {
+            color: rgb(0, 0, 0);
+            font-size: 18px;
+            text-align: center;
+            padding: 10px 0;
+            margin-bottom: 10px;
+        }
+
+        .layui-form .checkbox_style {
+            margin-left: 20px;
+        }
+
+        .layui-form .layui-form-item {
+            margin: 20px 0;
+        }
+
+        .layui-form-item button {
+            margin-left: 20px;
+            margin-top: 10px;
+            width: 90%;
+        }
+
+        .layui-form-item .info {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="user_login">
+        <div></div>
+        <div class="user_form_main">
+            <div class="title">幻蝶ERP管理系统</div>
+            <div>
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <div class="inputdiv">
+                            <i class="layui-icon layui-icon-username"></i>
+                            <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名"
+                                autocomplete="off" class="layui-input"></input>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="inputdiv">
+                            <i class="layui-icon layui-icon-password"></i>
+                            <input type="password" name="password" required lay-verify="required" placeholder="请输入密码"
+                                autocomplete="off" class="layui-input"></input>
+                        </div>
+                    </div>
+                    <div class="checkbox_style">
+                        <div class="layui-form-item">
+                            <input type="checkbox" name="like" value="flase" lay-filter="status" title="记住我">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <button type="submit" class="layui-btn layui-btn-normal">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../layui/layui.js"></script>
+    <script>
+        layui.use(['form', 'jquery'], function () {
+
+            var form = layui.form;
+            window.jquery = window.$ = layui.jquery;
+            //界面
+
+            form.on('checkbox(status)', function (data) {
+                data.elem.value = data.elem.checked;
+            });
+            form.on('submit(*)', function (data) {
+                console.log("xxx")
+
+                return false;
+            })
+
+
+            form.render();
+
+        });
+        function submitLogin() {
+            let username = $("input[name='username']");
+            let password = $("input[name='password']");
+            let isbox = $(".layui-form-checked");
+
+            console.log(username.val(), password.val(), isbox);
+
+        }
+    </script>
+</body>
+
+</html>
